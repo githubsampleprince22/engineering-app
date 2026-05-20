@@ -10,6 +10,9 @@ export const useProjects = () => {
   return context;
 };
 
+// Use the environment variable if available (Production), otherwise fallback to local proxy (Development)
+const API_URL = import.meta.env.VITE_API_URL || '';
+
 export const ProjectProvider = ({ children }) => {
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -22,7 +25,7 @@ export const ProjectProvider = ({ children }) => {
   const fetchProjects = async () => {
     try {
       setLoading(true);
-      const response = await fetch('/api/projects');
+      const response = await fetch(`${API_URL}/api/projects`);
       if (response.ok) {
         const data = await response.json();
         setProjects(data);
@@ -50,7 +53,7 @@ export const ProjectProvider = ({ children }) => {
     };
     
     try {
-      const response = await fetch('/api/projects', {
+      const response = await fetch(`${API_URL}/api/projects`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newProject)
@@ -68,7 +71,7 @@ export const ProjectProvider = ({ children }) => {
 
   const updateProject = async (projectId, updates) => {
     try {
-      const response = await fetch(`/api/projects/${projectId}`, {
+      const response = await fetch(`${API_URL}/api/projects/${projectId}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(updates)
@@ -92,7 +95,7 @@ export const ProjectProvider = ({ children }) => {
 
   const permanentDeleteProject = async (projectId) => {
     try {
-      const response = await fetch(`/api/projects/${projectId}/permanent`, {
+      const response = await fetch(`${API_URL}/api/projects/${projectId}/permanent`, {
         method: 'DELETE'
       });
       if (response.ok) {
@@ -106,7 +109,7 @@ export const ProjectProvider = ({ children }) => {
   const addExpense = async (projectId, expense) => {
     const newExpense = { ...expense, id: Date.now().toString(), date: expense.date || new Date().toISOString() };
     try {
-      const response = await fetch(`/api/projects/${projectId}/expenses`, {
+      const response = await fetch(`${API_URL}/api/projects/${projectId}/expenses`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newExpense)
@@ -123,7 +126,7 @@ export const ProjectProvider = ({ children }) => {
   const addMaterial = async (projectId, material) => {
     const newMaterial = { ...material, id: Date.now().toString(), date: material.date || new Date().toISOString() };
     try {
-      const response = await fetch(`/api/projects/${projectId}/materials`, {
+      const response = await fetch(`${API_URL}/api/projects/${projectId}/materials`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newMaterial)
@@ -140,7 +143,7 @@ export const ProjectProvider = ({ children }) => {
   const addEstimation = async (projectId, estimation) => {
     const newEstimation = { ...estimation, id: Date.now().toString() };
     try {
-      const response = await fetch(`/api/projects/${projectId}/estimations`, {
+      const response = await fetch(`${API_URL}/api/projects/${projectId}/estimations`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newEstimation)
@@ -156,7 +159,7 @@ export const ProjectProvider = ({ children }) => {
 
   const deleteEstimation = async (projectId, estimationId) => {
     try {
-      const response = await fetch(`/api/projects/${projectId}/estimations/${estimationId}`, {
+      const response = await fetch(`${API_URL}/api/projects/${projectId}/estimations/${estimationId}`, {
         method: 'DELETE'
       });
       if (response.ok) {
@@ -171,7 +174,7 @@ export const ProjectProvider = ({ children }) => {
   const addActual = async (projectId, actual) => {
     const newActual = { ...actual, id: Date.now().toString(), date: actual.date || new Date().toISOString() };
     try {
-      const response = await fetch(`/api/projects/${projectId}/actuals`, {
+      const response = await fetch(`${API_URL}/api/projects/${projectId}/actuals`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newActual)
@@ -225,7 +228,7 @@ export const ProjectProvider = ({ children }) => {
     };
     
     try {
-      const response = await fetch('/api/projects/demo', {
+      const response = await fetch(`${API_URL}/api/projects/demo`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(demoProject)

@@ -11,9 +11,9 @@ const CreateProjectModal = ({ isOpen, onClose, onSave }) => {
     'Residential', 'Commercial', 'Industrial', 'Bridge', 'Highway', 'Infrastructure', 'Custom'
   ];
 
-  const handleSave = () => {
+  const handleSave = async () => {
     if (name.trim()) {
-      onSave(name, type, budget);
+      await onSave(name, type, budget);
       setName('');
       setBudget('');
       onClose();

@@ -89,9 +89,9 @@ const Dashboard = () => {
                   Create First Folder
                 </button>
                 <div style={{ marginTop: '16px' }}>
-                  <button className="ios-btn-secondary" onClick={() => {
-                    const demo = loadDemoProject();
-                    setSelectedProject(demo);
+                  <button className="ios-btn-secondary" onClick={async () => {
+                    const demo = await loadDemoProject();
+                    if (demo) setSelectedProject(demo);
                   }}>
                     Load Sample Demo
                   </button>

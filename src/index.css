@@ -1,0 +1,203 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --system-blue: #0A84FF;
+  --system-red: #FF453A;
+  --system-green: #32D74B;
+  --system-orange: #FF9F0A;
+  --system-gray: #8E8E93;
+  --system-gray-2: #636366;
+  --system-gray-3: #48484A;
+  --system-gray-4: #38383A;
+  --system-gray-5: #2C2C2E;
+  --system-gray-6: #1C1C1E;
+  
+  --currency-symbol: "₱";
+  
+  --ios-bg: #000000;
+  --ios-card-bg: rgba(28, 28, 30, 0.8);
+  --ios-blur: blur(20px);
+  
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: dark;
+  color: #ffffff;
+  background-color: var(--ios-bg);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  min-width: 320px;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background-color: var(--ios-bg);
+}
+
+#root {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* iOS Style Classes */
+.ios-card {
+  background: #1C1C1E;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  margin-bottom: 12px;
+}
+
+.ios-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: var(--ios-blur);
+  -webkit-backdrop-filter: var(--ios-blur);
+  padding: 20px 16px 12px 16px;
+  border-bottom: 0.5px solid var(--system-gray-4);
+}
+
+.ios-title {
+  font-size: 34px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  margin: 0;
+  color: #ffffff;
+}
+
+.ios-subtitle {
+  font-size: 17px;
+  color: var(--system-gray);
+  margin-top: 4px;
+}
+
+.ios-btn-primary {
+  background: var(--system-blue);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 20px;
+  font-weight: 600;
+  font-size: 17px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.ios-btn-primary:active {
+  opacity: 0.7;
+}
+
+.ios-btn-secondary {
+  background: var(--system-gray-6);
+  color: var(--system-blue);
+  border: none;
+  border-radius: 10px;
+  padding: 12px 20px;
+  font-weight: 500;
+  font-size: 17px;
+  cursor: pointer;
+}
+
+.ios-tab-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 83px;
+  background: rgba(20, 20, 20, 0.9);
+  backdrop-filter: var(--ios-blur);
+  -webkit-backdrop-filter: var(--ios-blur);
+  border-top: 0.5px solid var(--system-gray-4);
+  display: flex;
+  justify-content: space-around;
+  padding-top: 8px;
+  padding-bottom: 20px;
+  z-index: 100;
+}
+
+.ios-tab-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--system-gray);
+  font-size: 10px;
+  text-decoration: none;
+}
+
+.ios-tab-item.active {
+  color: var(--system-blue);
+}
+
+/* Segmented Control (Tabs) */
+.ios-segmented-control {
+  display: flex;
+  background: var(--system-gray-6);
+  border-radius: 10px;
+  padding: 2px;
+  margin-bottom: 20px;
+}
+
+.ios-segmented-control-item {
+  flex: 1;
+  padding: 8px;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  font-size: 13px;
+  font-weight: 400;
+  text-transform: capitalize;
+  cursor: pointer;
+  color: var(--system-gray);
+}
+
+.ios-segmented-control-item.active {
+  background: var(--system-gray-3);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.ios-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 1000;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.ios-modal {
+  background: var(--system-gray-6);
+  width: 100%;
+  max-width: 500px;
+  border-radius: 20px 20px 0 0;
+  padding: 24px;
+  padding-bottom: 40px;
+  box-shadow: 0 -5px 15px rgba(0,0,0,0.3);
+}
+
+.ios-input {
+  width: 100%;
+  padding: 12px;
+  background: var(--system-gray-5);
+  border: none;
+  border-radius: 10px;
+  font-size: 17px;
+  margin-bottom: 16px;
+  box-sizing: border-box;
+  color: white;
+}
